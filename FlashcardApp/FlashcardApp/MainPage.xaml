@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashcardApp.MainPage"
+             xmlns:model="clr-namespace:FlashcardApp.Models">
+
+    <StackLayout>
+        <Button x:Name="NewDeck"
+                Text="Add Deck"
+                Clicked="NewDeck_Clicked"/>
+        <ListView x:Name="DecksListView"
+                  Margin="20"
+                  ItemSelected="DecksListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Deck">
+                    <TextCell Text="{Binding DeckName}"
+                              Detail="{Binding Date}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

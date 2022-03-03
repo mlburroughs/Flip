@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashcardApp.AddDeckPage"
+             xmlns:model="clr-namespace:FlashcardApp.Models">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="DeckTitle"
+                   Text="{Binding}"
+                   HeightRequest="25" />
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+
+                <Label x:Name="CreatedOnText"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Created: "
+                       HeightRequest="16" 
+                       IsVisible="True"/>
+                <Label x:Name="CreatedOn"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding}"
+                       HeightRequest="16" 
+                       IsVisible="True"/>
+                <Label x:Name="AccessedOnText"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Last Accessed: "
+                       HeightRequest="16" 
+                       IsVisible="True"/>
+                <Label x:Name="AccessedOn"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding}"
+                       HeightRequest="16" 
+                       IsVisible="True"/>
+            </Grid>
+            
+            <Editor x:Name="DeckName"
+                    Placeholder="{Binding}"
+                    HeightRequest="50"/>
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button x:Name="DeckSave"
+                        Text="Save"
+                        HeightRequest="100"
+                        Clicked="DeckSave_Clicked"/>
+                <Button x:Name="DeckDelete"
+                        Text="Delete"
+                        HeightRequest="100"
+                        Clicked="DeckDelete_Clicked"
+                        Grid.Column="1"/>
+            </Grid>
+
+            <Button x:Name="PracticeDeck"
+                Text="Practice Deck"
+                Clicked="PracticeDeck_Clicked"/>
+            <Button x:Name="ManageDeck"
+                Text="Manage Deck"
+                Clicked="ManageDeck_Clicked"/>
+
+            <ListView x:Name="CardsListView"
+                  Margin="20"
+                  ItemSelected="CardsListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Card">
+                        <TextCell Text="{Binding FrontText}" Detail="{Binding Date}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

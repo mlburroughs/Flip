@@ -24,16 +24,34 @@ namespace FlashcardApp
             var deck = (Deck)BindingContext;
             DeckTitle.Text = deck.DeckName;
 
+            var deckName = deck.DeckName;
+
+            var deckList = deck.CardsInDeck;
+
+            var cards = new List<Card>();
+            var files = Directory.EnumerateFiles(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), $"*.{deckName}.cards.txt");
+            foreach (var filename in files)
+            {
+                var card = new Card
+                {
+                    FrontText = File.ReadAllText(filename),
+                    FileName = filename
+                };
+                cards.Add(card);
+            }
+
+            CardsListView.ItemsSource = cards.OrderBy(n => n.FrontText); 
         }
 
 
 
         private async void NewCardForDeck_Clicked(object sender, EventArgs e)
         {
-            
+            var deck = (Deck)BindingContext;
             await Navigation.PushModalAsync(new AddCardPage
             {
-                BindingContext = new Card()
+                BindingContext = deck
             });
         }
 
@@ -45,6 +63,12 @@ namespace FlashcardApp
                 BindingContext = (Card)e.SelectedItem
             });
 
+        }
+
+        private async void GoBackToDeck_Clicked(object sender, EventArgs e)
+        {
+            
+            await Navigation.PopModalAsync();
         }
     }
 }

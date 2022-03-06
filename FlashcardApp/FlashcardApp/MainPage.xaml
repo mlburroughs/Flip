@@ -7,14 +7,19 @@
     <StackLayout>
         <Button x:Name="NewDeck"
                 Text="Add Deck"
-                Clicked="NewDeck_Clicked"/>
+                Clicked="NewDeck_Clicked"
+                TextColor="LightSalmon"
+                FontAttributes="Bold"
+                BackgroundColor="DarkSlateGray"/>
         <ListView x:Name="DecksListView"
                   Margin="20"
                   ItemSelected="DecksListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Deck">
                     <TextCell Text="{Binding DeckName}"
-                              Detail="{Binding Date}"/>
+                              TextColor="DarkSlateGray"
+                              Detail="{Binding Date}"
+                              DetailColor="SlateGray"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

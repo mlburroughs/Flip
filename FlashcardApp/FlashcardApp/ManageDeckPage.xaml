@@ -11,6 +11,9 @@
             <Button x:Name="NewCardForDeck"
                 Text="Add Card"
                 Clicked="NewCardForDeck_Clicked"/>
+            <Button x:Name="GoBackToDeck"
+                Text="Back To Deck"
+                Clicked="GoBackToDeck_Clicked"/>
             <Label x:Name="CardsTitle"
                        Text="Cards in Deck"
                        FontSize="Medium"

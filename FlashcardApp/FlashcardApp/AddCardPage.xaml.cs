@@ -14,50 +14,39 @@ namespace FlashcardApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCardPage : ContentPage
     {
-        
-        
-        
+
+
+
         public AddCardPage()
         {
             InitializeComponent();
-            
+            LabelSave.Text = "";
         }
 
 
-        
+
 
         private async void CardSave_Clicked(object sender, EventArgs e)
         {
-            var card = (Card)BindingContext;
+            // Get Deck
+            var deck = (Deck)BindingContext;
 
-            // If filename is empty
-            if (string.IsNullOrEmpty(card.FileName))
-            {
-                card.FileName = Path.Combine(Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData),
-                    $"{Path.GetRandomFileName()}.cards.txt");
-            }
+            // Get Deck Name
+            var deckname = deck.DeckName;
+
+            // Create new Card
+            var card = new Card();
+
+            card.FileName = Path.Combine(Environment.GetFolderPath(
+                Environment.SpecialFolder.LocalApplicationData),
+                $"{Path.GetRandomFileName()}.{deckname}.cards.txt");
+
             File.WriteAllText(card.FileName, CardName.Text);
+            LabelSave.Text = CardName.Text;
 
             // Navigate back to Deck Page
             await Navigation.PopModalAsync();
         }
 
-        private async void CardDelete_Clicked(object sender, EventArgs e)
-        {
-            var card = (Card)BindingContext;
-
-            // If there is a note
-            if (File.Exists(card.FileName))
-            {
-                File.Delete(card.FileName);
-            }
-
-            // Text box clears
-            CardName.Text = string.Empty;
-
-            // Navigation back to Deck Page
-            await Navigation.PopModalAsync();
-        }
     }
 }

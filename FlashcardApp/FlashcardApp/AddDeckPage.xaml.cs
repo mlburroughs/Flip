@@ -57,20 +57,20 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
-            // If filename is empty
+            // If filename is empty, get new files name
             if (string.IsNullOrEmpty(deck.FileName))
             {
                 deck.FileName = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
                     $"{Path.GetRandomFileName()}.decks.txt");
             }
-
-            //If deck name is entered
-            if (!string.IsNullOrEmpty(deck.DeckName))
+            else
             {
-                File.WriteAllText(deck.FileName, DeckName.Text);
+                DeckName.Text = deck.DeckName;
             }
             
+            File.WriteAllText(deck.FileName, DeckName.Text);
+
 
             // Navigate back to Deck Page
             await Navigation.PopModalAsync();

@@ -7,7 +7,6 @@
             <Label Text="Card"
                    HeightRequest="16" />
             <Editor x:Name="CardName"
-                    Text="56"
                     Placeholder="Card Name"
                     HeightRequest="50"/>
             <Grid>
@@ -18,10 +17,9 @@
                 <Button x:Name="CardSave"
                         Text="Save"
                         Clicked="CardSave_Clicked"/>
-                <Button x:Name="CardDelete"
-                        Text="Delete"
-                        Clicked="CardDelete_Clicked"
-                        Grid.Column="1"/>
+                <Label x:Name="LabelSave"
+                       Text="{Binding}"
+                       Grid.Column="1"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

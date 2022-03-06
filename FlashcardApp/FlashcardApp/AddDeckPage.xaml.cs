@@ -25,32 +25,28 @@ namespace FlashcardApp
             InitializeComponent();
         }
 
-        // Shows List of cards in deck
+
+        // Updates time variables if deck is saved
         protected override void OnAppearing()
         {
             var deck = (Deck)BindingContext;
-            var cardsInDeck = deck.CardsInDeck;
 
             if (!string.IsNullOrEmpty(deck.FileName))
             {
-                DeckTitle.Text = File.ReadAllText(deck.FileName);
-                CreatedOn.Text = File.GetCreationTime(deck.FileName).ToString();
-                AccessedOn.Text = File.GetLastAccessTime(deck.FileName).ToString();
-                DeckName.Placeholder = "Modify Title";
+                CreatedOn.Text = File.GetLastAccessTime(deck.FileName).ToString();
+                AccessedOn.Text = File.GetCreationTime(deck.FileName).ToString(); ;
+                DeckName.Placeholder = deck.DeckName;
             }
             else
             {
-                DeckTitle.Text = "New Deck";
                 CreatedOn.IsVisible = false;
                 CreatedOnText.IsVisible = false;
                 AccessedOn.IsVisible = false;
                 AccessedOnText.IsVisible = false;
                 DeckName.Placeholder = "Enter Title";
             }
-
-
-
         }
+
 
         // Saves deck and returns to MainPage
         private async void DeckSave_Clicked(object sender, EventArgs e)
@@ -76,6 +72,7 @@ namespace FlashcardApp
             await Navigation.PopModalAsync();
         }
 
+
         // Deletes deck and returns to MainPage
         private async void DeckDelete_Clicked(object sender, EventArgs e)
         {
@@ -94,25 +91,29 @@ namespace FlashcardApp
             await Navigation.PopModalAsync();
         }
 
-        // Opens existing card in deck
-        private void CardsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            Navigation.PushModalAsync(new AddCardPage
-            {
-                
-                BindingContext = (Card)e.SelectedItem
-            });
-        }
 
         // Opens ManageDeckPage
         private async void ManageDeck_Clicked(object sender, EventArgs e)
         {
             var deck = (Deck)BindingContext;
+            DeckName.Text = deck.DeckName;
+
+            // If filename is empty, get new files name
+            if (string.IsNullOrEmpty(deck.FileName))
+            {
+                deck.FileName = Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData),
+                    $"{Path.GetRandomFileName()}.decks.txt");
+            }
+
+            File.WriteAllText(deck.FileName, DeckName.Text);
+
             await Navigation.PushModalAsync(new ManageDeckPage
             {
                 BindingContext = deck
             });
         }
+
 
         // Opens PraticeDeckPage
         private async void PracticeDeck_Clicked(object sender, EventArgs e)

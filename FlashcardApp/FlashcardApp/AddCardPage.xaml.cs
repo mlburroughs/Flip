@@ -15,16 +15,25 @@ namespace FlashcardApp
     public partial class AddCardPage : ContentPage
     {
 
-
-
         public AddCardPage()
         {
             InitializeComponent();
             LabelSave.Text = "";
         }
 
+        protected override void OnAppearing()
+        {
+            var card = (Card)BindingContext;
 
-
+            if (!string.IsNullOrEmpty(card.FileName))
+            {
+                CardName.Placeholder = card.FrontText;
+            }
+            else
+            {
+                CardName.Placeholder = "Enter Card name";
+            }
+        }
 
         private async void CardSave_Clicked(object sender, EventArgs e)
         {
@@ -48,5 +57,21 @@ namespace FlashcardApp
             await Navigation.PopModalAsync();
         }
 
+        private async void CardDelete_Clicked(object sender, EventArgs e)
+        {
+            var card = (Card)BindingContext;
+
+            // If there is a note
+            if (File.Exists(card.FileName))
+            {
+                File.Delete(card.FileName);
+            }
+
+            // Text box clears
+            CardName.Text = string.Empty;
+
+            // Navigation back to Deck Page
+            await Navigation.PopModalAsync();
+        }
     }
 }

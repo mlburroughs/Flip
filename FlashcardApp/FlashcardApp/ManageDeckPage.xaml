@@ -7,25 +7,36 @@
         <StackLayout>
             <Label x:Name="DeckTitle"
                    Text="{Binding}"
+                   TextColor="DarkSlateGray"
                    HeightRequest="25" />
             <Button x:Name="NewCardForDeck"
                 Text="Add Card"
+                TextColor="LightSalmon"
+                HeightRequest="100"
+                BackgroundColor="DarkSlateGray"
                 Clicked="NewCardForDeck_Clicked"/>
             <Button x:Name="GoBackToDeck"
                 Text="Back To Deck"
+                TextColor="LightSalmon"
+                HeightRequest="100"
+                BackgroundColor="DarkSlateGray"
                 Clicked="GoBackToDeck_Clicked"/>
             <Label x:Name="CardsTitle"
-                       Text="Cards in Deck"
-                       FontSize="Medium"
-                       HeightRequest="25"
-                       IsVisible="True"/>
+                   Text="Cards in Deck"
+                   TextColor="DarkSlateGray"
+                   FontSize="Medium"
+                   HeightRequest="25"
+                   IsVisible="True"/>
 
             <ListView x:Name="CardsListView"
-                  Margin="20"
-                  ItemSelected="CardsListView_ItemSelected">
+                      Margin="20"
+                      ItemSelected="CardsListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="model:Card">
-                        <TextCell Text="{Binding FrontText}" Detail="{Binding Date}" />
+                        <TextCell Text="{Binding FrontText}"
+                                  TextColor="DarkSlateGray"
+                                  Detail="{Binding Date}"
+                                  DetailColor="SlateGray"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

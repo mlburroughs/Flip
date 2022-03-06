@@ -5,10 +5,6 @@
              xmlns:model="clr-namespace:FlashcardApp.Models">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="DeckTitle"
-                   Text="{Binding}"
-                   HeightRequest="25" />
-            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -23,30 +19,36 @@
                        Grid.Row="0"
                        Grid.Column="0"
                        Text="Created: "
+                       TextColor="DarkSlateGray"
                        HeightRequest="16" 
                        IsVisible="True"/>
                 <Label x:Name="CreatedOn"
                        Grid.Row="0"
                        Grid.Column="1"
                        Text="{Binding}"
+                       TextColor="DarkSlateGray"
                        HeightRequest="16" 
                        IsVisible="True"/>
                 <Label x:Name="AccessedOnText"
                        Grid.Row="1"
                        Grid.Column="0"
                        Text="Last Accessed: "
+                       TextColor="DarkSlateGray"
                        HeightRequest="16" 
                        IsVisible="True"/>
                 <Label x:Name="AccessedOn"
                        Grid.Row="1"
                        Grid.Column="1"
                        Text="{Binding}"
+                       TextColor="DarkSlateGray"
                        HeightRequest="16" 
                        IsVisible="True"/>
             </Grid>
             
             <Editor x:Name="DeckName"
                     Placeholder="{Binding}"
+                    PlaceholderColor="DarkSlateGray"
+                    TextColor="SlateGray"
                     HeightRequest="50"/>
             <Grid>
                 
@@ -57,32 +59,33 @@
                 
                 <Button x:Name="DeckSave"
                         Text="Save"
+                        TextColor="LightSalmon"
+                        BackgroundColor="DarkSlateGray"
                         HeightRequest="100"
                         Clicked="DeckSave_Clicked"/>
                 <Button x:Name="DeckDelete"
                         Text="Delete"
+                        TextColor="LightSalmon"
+                        BackgroundColor="DarkSlateGray"
                         HeightRequest="100"
                         Clicked="DeckDelete_Clicked"
                         Grid.Column="1"/>
             </Grid>
 
-            <Button x:Name="PracticeDeck"
-                Text="Practice Deck"
-                Clicked="PracticeDeck_Clicked"/>
             <Button x:Name="ManageDeck"
-                Text="Manage Deck"
-                Clicked="ManageDeck_Clicked"/>
-
-            <ListView x:Name="CardsListView"
-                  Margin="20"
-                  ItemSelected="CardsListView_ItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Card">
-                        <TextCell Text="{Binding FrontText}" Detail="{Binding Date}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                    Text="Manage Deck"
+                    TextColor="LightSalmon"
+                    HeightRequest="100"
+                    BackgroundColor="DarkSlateGray"
+                    Clicked="ManageDeck_Clicked"/>
+            <Button x:Name="PracticeDeck"
+                    Text="Practice Deck"
+                    TextColor="LightSalmon"
+                    HeightRequest="100"
+                    BackgroundColor="DarkSlateGray"
+                    Clicked="PracticeDeck_Clicked"/>
 
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

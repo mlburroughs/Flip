@@ -4,23 +4,41 @@
              x:Class="FlashcardApp.AddCardPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Card"
-                   HeightRequest="16" />
+            
             <Editor x:Name="CardName"
+                    TextColor="DarkSlateGray"
                     Placeholder="Card Name"
+                    PlaceholderColor="SlateGray"
                     HeightRequest="50"/>
+            
             <Grid>
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
                 <Button x:Name="CardSave"
                         Text="Save"
+                        TextColor="LightSalmon"
+                        HeightRequest="100"
+                        BackgroundColor="DarkSlateGray"
                         Clicked="CardSave_Clicked"/>
-                <Label x:Name="LabelSave"
-                       Text="{Binding}"
-                       Grid.Column="1"/>
+                <Button x:Name="CardDelete"
+                        Text="Delete"
+                        TextColor="LightSalmon"
+                        HeightRequest="100"
+                        BackgroundColor="DarkSlateGray"
+                        Clicked="CardDelete_Clicked"
+                        Grid.Column="1"/>
+                
             </Grid>
+            
+            <Label x:Name="LabelSave"
+                       Text="{Binding}"
+                       TextColor="DarkSlateGray"
+                       Grid.Column="1"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

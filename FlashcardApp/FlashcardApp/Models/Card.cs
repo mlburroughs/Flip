@@ -8,7 +8,7 @@ namespace FlashcardApp.Models
     {
         public string FrontText { get; set; }
         public string BackText { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public string FileName { get; set; }
     }
 }

@@ -10,6 +10,8 @@
                 Clicked="NewDeck_Clicked"
                 TextColor="LightSalmon"
                 FontAttributes="Bold"
+                FontSize="20"
+                HeightRequest="100"
                 BackgroundColor="DarkSlateGray"/>
         <ListView x:Name="DecksListView"
                   Margin="20"
@@ -19,7 +21,8 @@
                     <TextCell Text="{Binding DeckName}"
                               TextColor="DarkSlateGray"
                               Detail="{Binding Date}"
-                              DetailColor="SlateGray"/>
+                              DetailColor="SlateGray"
+                              Height="60"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

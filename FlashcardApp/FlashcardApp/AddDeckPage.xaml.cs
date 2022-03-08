@@ -36,6 +36,9 @@ namespace FlashcardApp
                 CreatedOn.Text = File.GetLastAccessTime(deck.FileName).ToString();
                 AccessedOn.Text = File.GetCreationTime(deck.FileName).ToString(); ;
                 DeckName.Placeholder = deck.DeckName;
+                DeckName.IsVisible = false;
+                TitleText.Text = deck.DeckName;
+                TitleText.IsVisible = true;
             }
             else
             {
@@ -43,6 +46,7 @@ namespace FlashcardApp
                 CreatedOnText.IsVisible = false;
                 AccessedOn.IsVisible = false;
                 AccessedOnText.IsVisible = false;
+                TitleText.IsVisible = false;
                 DeckName.Placeholder = "Enter Title";
             }
         }
@@ -53,21 +57,15 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
-            // If filename is empty, get new files name
-            if (string.IsNullOrEmpty(deck.FileName))
+            if (string.IsNullOrEmpty(deck.FileName))// If filename is empty, get new files name
             {
                 deck.FileName = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
                     $"{Path.GetRandomFileName()}.decks.txt");
-            }
-            else
-            {
-                DeckName.Text = deck.DeckName;
+                deck.DeckName = DeckName.Text;
+                File.WriteAllText(deck.FileName, deck.DeckName);
             }
             
-            File.WriteAllText(deck.FileName, DeckName.Text);
-
-
             // Navigate back to Deck Page
             await Navigation.PopModalAsync();
         }
@@ -78,11 +76,19 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
-            // If there is a note
+            // If there is a deck
             if (File.Exists(deck.FileName))
             {
+                var files = Directory.EnumerateFiles(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.cards.txt");
+
+                foreach (var filename in files)
+                {
+                    File.Delete(filename);
+                }
                 File.Delete(deck.FileName);
             }
+
 
             // Text box clears
             DeckName.Text = string.Empty;
@@ -96,22 +102,25 @@ namespace FlashcardApp
         private async void ManageDeck_Clicked(object sender, EventArgs e)
         {
             var deck = (Deck)BindingContext;
-            DeckName.Text = deck.DeckName;
+            
+              DeckName.Text = deck.DeckName;
+
 
             // If filename is empty, get new files name
             if (string.IsNullOrEmpty(deck.FileName))
-            {
-                deck.FileName = Path.Combine(Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData),
-                    $"{Path.GetRandomFileName()}.decks.txt");
-            }
-
-            File.WriteAllText(deck.FileName, DeckName.Text);
+                {
+                    deck.FileName = Path.Combine(Environment.GetFolderPath(
+                        Environment.SpecialFolder.LocalApplicationData),
+                        $"{Path.GetRandomFileName()}.decks.txt");
+                }
+                
+                File.WriteAllText(deck.FileName, DeckName.Text);
 
             await Navigation.PushModalAsync(new ManageDeckPage
-            {
-                BindingContext = deck
-            });
+                {
+                    BindingContext = deck
+                });
+            
         }
 
 

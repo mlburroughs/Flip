@@ -9,7 +9,8 @@
                     TextColor="DarkSlateGray"
                     Placeholder="Card Name"
                     PlaceholderColor="SlateGray"
-                    HeightRequest="50"/>
+                    FontSize="40"
+                    HeightRequest="70"/>
             
             <Grid>
                 
@@ -21,23 +22,22 @@
                 <Button x:Name="CardSave"
                         Text="Save"
                         TextColor="LightSalmon"
+                        FontSize="20"
+                        FontAttributes="Bold"
                         HeightRequest="100"
                         BackgroundColor="DarkSlateGray"
                         Clicked="CardSave_Clicked"/>
                 <Button x:Name="CardDelete"
                         Text="Delete"
                         TextColor="LightSalmon"
+                        FontSize="20"
+                        FontAttributes="Bold"
                         HeightRequest="100"
                         BackgroundColor="DarkSlateGray"
                         Clicked="CardDelete_Clicked"
                         Grid.Column="1"/>
                 
             </Grid>
-            
-            <Label x:Name="LabelSave"
-                       Text="{Binding}"
-                       TextColor="DarkSlateGray"
-                       Grid.Column="1"/>
             
         </StackLayout>
     </ContentPage.Content>

@@ -5,51 +5,28 @@
              xmlns:model="clr-namespace:FlashcardApp.Models">
     <ContentPage.Content>
         <StackLayout>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                </Grid.RowDefinitions>
-
-                <Label x:Name="CreatedOnText"
+            <Label x:Name="TitleText"
                        Grid.Row="0"
                        Grid.Column="0"
-                       Text="Created: "
-                       TextColor="DarkSlateGray"
-                       HeightRequest="16" 
-                       IsVisible="True"/>
-                <Label x:Name="CreatedOn"
-                       Grid.Row="0"
-                       Grid.Column="1"
                        Text="{Binding}"
                        TextColor="DarkSlateGray"
-                       HeightRequest="16" 
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="130" 
                        IsVisible="True"/>
-                <Label x:Name="AccessedOnText"
-                       Grid.Row="1"
-                       Grid.Column="0"
-                       Text="Last Accessed: "
-                       TextColor="DarkSlateGray"
-                       HeightRequest="16" 
-                       IsVisible="True"/>
-                <Label x:Name="AccessedOn"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Text="{Binding}"
-                       TextColor="DarkSlateGray"
-                       HeightRequest="16" 
-                       IsVisible="True"/>
-            </Grid>
             
+                         
             <Editor x:Name="DeckName"
                     Placeholder="{Binding}"
                     PlaceholderColor="DarkSlateGray"
                     TextColor="SlateGray"
-                    HeightRequest="50"/>
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    HeightRequest="130"/>
+            
             <Grid>
                 
                 <Grid.ColumnDefinitions>
@@ -60,14 +37,18 @@
                 <Button x:Name="DeckSave"
                         Text="Save"
                         TextColor="LightSalmon"
+                        FontAttributes="Bold"
                         BackgroundColor="DarkSlateGray"
                         HeightRequest="100"
+                        FontSize="20"
                         Clicked="DeckSave_Clicked"/>
                 <Button x:Name="DeckDelete"
                         Text="Delete"
                         TextColor="LightSalmon"
+                        FontAttributes="Bold"
                         BackgroundColor="DarkSlateGray"
                         HeightRequest="100"
+                        FontSize="20"
                         Clicked="DeckDelete_Clicked"
                         Grid.Column="1"/>
             </Grid>
@@ -75,17 +56,66 @@
             <Button x:Name="ManageDeck"
                     Text="Manage Deck"
                     TextColor="LightSalmon"
-                    HeightRequest="100"
+                    FontAttributes="Bold"
+                    HeightRequest="200"
+                    FontSize="20"
                     BackgroundColor="DarkSlateGray"
                     Clicked="ManageDeck_Clicked"/>
             <Button x:Name="PracticeDeck"
                     Text="Practice Deck"
                     TextColor="LightSalmon"
-                    HeightRequest="100"
+                    FontAttributes="Bold"
+                    HeightRequest="200"
+                    FontSize="20"
                     BackgroundColor="DarkSlateGray"
                     Clicked="PracticeDeck_Clicked"/>
 
+            
+       
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="CreatedOnText"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Text="Created: "
+                       TextColor="DarkSlateGray"
+                       FontAttributes="Bold"
+                       HeightRequest="16" 
+                       IsVisible="True"/>
+            <Label x:Name="CreatedOn"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{Binding}"
+                       TextColor="DarkSlateGray"
+                       HeightRequest="16"
+                       HorizontalTextAlignment="End"
+                       IsVisible="True"/>
+            <Label x:Name="AccessedOnText"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Text="Last Accessed: "
+                       TextColor="DarkSlateGray"
+                       FontAttributes="Bold"
+                       HeightRequest="16" 
+                       IsVisible="True"/>
+            <Label x:Name="AccessedOn"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Text="{Binding}"
+                       TextColor="DarkSlateGray"
+                       HeightRequest="16" 
+                       HorizontalTextAlignment="End"
+                       IsVisible="True"/>
+        </Grid>
         </StackLayout>
-        
     </ContentPage.Content>
 </ContentPage>

@@ -34,7 +34,7 @@ namespace FlashcardApp
                 };
                 decks.Add(deck);
             }
-            DecksListView.ItemsSource = decks.OrderBy(x => x.DeckName);
+            DecksListView.ItemsSource = decks.OrderByDescending(n => n.Date);
         }
 
         // Add new deck

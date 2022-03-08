@@ -18,22 +18,8 @@ namespace FlashcardApp
         public AddCardPage()
         {
             InitializeComponent();
-            LabelSave.Text = "";
         }
 
-        protected override void OnAppearing()
-        {
-            var card = (Card)BindingContext;
-
-            if (!string.IsNullOrEmpty(card.FileName))
-            {
-                CardName.Placeholder = card.FrontText;
-            }
-            else
-            {
-                CardName.Placeholder = "Enter Card name";
-            }
-        }
 
         private async void CardSave_Clicked(object sender, EventArgs e)
         {
@@ -51,7 +37,6 @@ namespace FlashcardApp
                 $"{Path.GetRandomFileName()}.{deckname}.cards.txt");
 
             File.WriteAllText(card.FileName, CardName.Text);
-            LabelSave.Text = CardName.Text;
 
             // Navigate back to Deck Page
             await Navigation.PopModalAsync();
@@ -67,8 +52,6 @@ namespace FlashcardApp
                 File.Delete(card.FileName);
             }
 
-            // Text box clears
-            CardName.Text = string.Empty;
 
             // Navigation back to Deck Page
             await Navigation.PopModalAsync();

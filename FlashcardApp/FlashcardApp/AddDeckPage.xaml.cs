@@ -102,19 +102,18 @@ namespace FlashcardApp
         private async void ManageDeck_Clicked(object sender, EventArgs e)
         {
             var deck = (Deck)BindingContext;
-            
-              DeckName.Text = deck.DeckName;
-
 
             // If filename is empty, get new files name
             if (string.IsNullOrEmpty(deck.FileName))
                 {
-                    deck.FileName = Path.Combine(Environment.GetFolderPath(
+                DeckName.Text = deck.DeckName;
+                deck.FileName = Path.Combine(Environment.GetFolderPath(
                         Environment.SpecialFolder.LocalApplicationData),
                         $"{Path.GetRandomFileName()}.decks.txt");
-                }
+                 File.WriteAllText(deck.FileName, DeckName.Text);
+            }
                 
-                File.WriteAllText(deck.FileName, DeckName.Text);
+            
 
             await Navigation.PushModalAsync(new ManageDeckPage
                 {

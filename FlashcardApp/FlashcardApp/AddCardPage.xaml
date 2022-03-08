@@ -4,9 +4,21 @@
              x:Class="FlashcardApp.AddCardPage">
     <ContentPage.Content>
         <StackLayout>
-            
+            <Label x:Name="CardTitle"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   FontSize="40"
+                   FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="70" 
+                       IsVisible="True"/>
+
+
+
             <Editor x:Name="CardName"
                     TextColor="DarkSlateGray"
+                    Text="{Binding}"
                     Placeholder="Card Name"
                     PlaceholderColor="SlateGray"
                     FontSize="40"

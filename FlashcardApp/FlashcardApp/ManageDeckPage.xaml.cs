@@ -14,6 +14,7 @@ namespace FlashcardApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManageDeckPage : ContentPage
     {
+        public string DeckName;
         public ManageDeckPage()
         {
             InitializeComponent();
@@ -49,17 +50,17 @@ namespace FlashcardApp
         private async void NewCardForDeck_Clicked(object sender, EventArgs e)
         {
             var deck = (Deck)BindingContext;
-            await Navigation.PushModalAsync(new AddCardPage
+            await Navigation.PushModalAsync(new AddCardPage(deck.DeckName)
             {
-                BindingContext = deck
+                BindingContext = new Card()
             });
         }
 
         private async void CardsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushModalAsync(new AddCardPage
+            var deck = (Deck)BindingContext;
+            await Navigation.PushModalAsync(new AddCardPage(deck.DeckName)
             {
-
                 BindingContext = (Card)e.SelectedItem
             });
 

@@ -14,29 +14,47 @@ namespace FlashcardApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCardPage : ContentPage
     {
-
-        public AddCardPage()
+        public string DeckName { get; set; }
+        public AddCardPage(string deckName)
         {
             InitializeComponent();
+            DeckName = deckName;
+
+            
+        }
+
+        protected override void OnAppearing()
+        {
+            var card = (Card)BindingContext;
+            if (!string.IsNullOrEmpty(card.FileName))
+            {
+                CardTitle.Text = card.FrontText;
+                CardName.IsVisible = false;
+                CardName.Text = card.FrontText;
+            }
+            else
+            {
+                CardTitle.IsVisible = false;
+                CardName.IsVisible = true;
+                CardName.Text = "";
+            }
         }
 
 
         private async void CardSave_Clicked(object sender, EventArgs e)
         {
-            // Get Deck
-            var deck = (Deck)BindingContext;
 
-            // Get Deck Name
-            var deckname = deck.DeckName;
+            var card = (Card)BindingContext;
 
             // Create new Card
-            var card = new Card();
 
-            card.FileName = Path.Combine(Environment.GetFolderPath(
+            if (string.IsNullOrEmpty(card.FileName) && !string.IsNullOrEmpty(CardName.Text))
+            {
+                card.FileName = Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.LocalApplicationData),
-                $"{Path.GetRandomFileName()}.{deckname}.cards.txt");
-
-            File.WriteAllText(card.FileName, CardName.Text);
+                $"{Path.GetRandomFileName()}.{DeckName}.cards.txt");
+                File.WriteAllText(card.FileName, CardName.Text);
+            }
 
             // Navigate back to Deck Page
             await Navigation.PopModalAsync();

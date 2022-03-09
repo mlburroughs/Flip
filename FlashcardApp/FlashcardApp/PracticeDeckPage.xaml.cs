@@ -38,10 +38,6 @@ namespace FlashcardApp
 
         }
 
-        private void CardFrontName_Clicked(object sender, EventArgs e)
-        {
-            Count++;
-        }
 
         private async void GoBackToDeck_Clicked(object sender, EventArgs e)
         {

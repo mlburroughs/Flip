@@ -31,6 +31,21 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
+            var cards = new List<Card>();
+            var files = Directory.EnumerateFiles(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.cards.txt");
+            foreach (var filename in files)
+            {
+                var card = new Card
+                {
+                    FrontText = File.ReadAllText(filename),
+                    FileNameFront = filename
+                };
+                cards.Add(card);
+            }
+
+            deck.CardsInDeck = cards;
+
             if (!string.IsNullOrEmpty(deck.FileName))
             {
                 CreatedOn.Text = File.GetLastAccessTime(deck.FileName).ToString();
@@ -39,6 +54,15 @@ namespace FlashcardApp
                 DeckName.IsVisible = false;
                 TitleText.Text = deck.DeckName;
                 TitleText.IsVisible = true;
+
+                if(deck.CardsInDeck?.Count > 0)
+                {
+                    PracticeDeck.IsVisible = true;
+                }
+                else
+                {
+                    PracticeDeck.IsVisible = false;
+                }
             }
             else
             {
@@ -48,6 +72,7 @@ namespace FlashcardApp
                 AccessedOnText.IsVisible = false;
                 TitleText.IsVisible = false;
                 DeckName.Placeholder = "Enter Title";
+                PracticeDeck.IsVisible = false;
             }
         }
 
@@ -126,10 +151,14 @@ namespace FlashcardApp
         // Opens PraticeDeckPage
         private async void PracticeDeck_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new PracticeDeckPage
+            var deck = (Deck)BindingContext;
+            var card = deck.CardsInDeck;
+
+
+            await Navigation.PushModalAsync(new PracticeDeckPage(deck.DeckName, deck.CardsInDeck)
             {
-                BindingContext = new Deck()
-            });
+                
+            }) ;
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Text;
 
 namespace FlashcardApp.Models
 {
-    class Card
+    public class Card
     {
         public string FrontText { get; set; }
         public string BackText { get; set; }
         public DateTime Date { get; set; }
-        public string FileName { get; set; }
+        public string FileNameFront { get; set; }
+        public string FileNameBack { get; set; }
     }
 }

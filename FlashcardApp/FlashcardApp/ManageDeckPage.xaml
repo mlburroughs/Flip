@@ -5,14 +5,7 @@
              xmlns:model="clr-namespace:FlashcardApp.Models">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="DeckTitle"
-                   Text="{Binding}"
-                   TextColor="DarkSlateGray"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="30"
-                   FontAttributes="Bold"
-                   HeightRequest="50" />
+            
             <Button x:Name="NewCardForDeck"
                 Text="Add Card"
                 TextColor="LightSalmon"
@@ -29,6 +22,15 @@
                 FontSize="20"
                 BackgroundColor="DarkSlateGray"
                 Clicked="GoBackToDeck_Clicked"/>
+
+            <Label x:Name="DeckTitle"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HeightRequest="50" />
             <Label x:Name="CardsTitle"
                    Text="Cards in Deck"
                    TextColor="DarkSlateGray"

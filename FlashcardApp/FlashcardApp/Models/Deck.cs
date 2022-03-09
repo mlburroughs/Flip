@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FlashcardApp.Models
 {
-    class Deck
+    public class Deck
     {
         public string DeckName { get; set; }
         public DateTime Date { get; set; }

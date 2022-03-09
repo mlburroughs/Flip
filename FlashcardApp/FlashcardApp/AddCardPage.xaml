@@ -4,33 +4,13 @@
              x:Class="FlashcardApp.AddCardPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="CardTitle"
-                   Text="{Binding}"
-                   TextColor="DarkSlateGray"
-                   FontSize="40"
-                   FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"
-                       HeightRequest="70" 
-                       IsVisible="True"/>
-
-
-
-            <Editor x:Name="CardName"
-                    TextColor="DarkSlateGray"
-                    Text="{Binding}"
-                    Placeholder="Card Name"
-                    PlaceholderColor="SlateGray"
-                    FontSize="40"
-                    HeightRequest="70"/>
-            
             <Grid>
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Button x:Name="CardSave"
                         Text="Save"
                         TextColor="LightSalmon"
@@ -48,9 +28,46 @@
                         BackgroundColor="DarkSlateGray"
                         Clicked="CardDelete_Clicked"
                         Grid.Column="1"/>
-                
+
             </Grid>
             
+            <Label x:Name="CardFrontTitle"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   FontSize="40"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   HeightRequest="70" 
+                   IsVisible="True"/>
+
+            <Label x:Name="CardBackTitle"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   FontSize="40"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   HeightRequest="70" 
+                   IsVisible="True"/>
+
+            <Editor x:Name="CardFrontName"
+                    TextColor="DarkSlateGray"
+                    Text="{Binding}"
+                    Placeholder="Card Front"
+                    PlaceholderColor="SlateGray"
+                    FontSize="40"
+                    HeightRequest="70"/>
+
+            <Editor x:Name="CardBackName"
+                    TextColor="DarkSlateGray"
+                    Text="{Binding}"
+                    Placeholder="Card Back"
+                    PlaceholderColor="SlateGray"
+                    FontSize="40"
+                    HeightRequest="70"/>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

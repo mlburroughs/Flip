@@ -19,44 +19,51 @@ namespace FlashcardApp
         {
             InitializeComponent();
             DeckName = deckName;
-
-            
         }
 
         protected override void OnAppearing()
         {
             var card = (Card)BindingContext;
-            if (!string.IsNullOrEmpty(card.FileName))
+            if (!string.IsNullOrEmpty(card.FileNameFront))
             {
-                CardTitle.Text = card.FrontText;
-                CardName.IsVisible = false;
-                CardName.Text = card.FrontText;
+                CardFrontTitle.Text = card.FrontText;
+                CardBackTitle.Text = card.BackText;
+                CardFrontName.IsVisible = false;
+                CardBackName.IsVisible = false;
+                CardFrontName.Text = card.FrontText;
+                CardBackName.Text = card.BackText;
             }
             else
             {
-                CardTitle.IsVisible = false;
-                CardName.IsVisible = true;
-                CardName.Text = "";
+                CardFrontTitle.IsVisible = false;
+                CardBackTitle.IsVisible = false;
+                CardFrontName.IsVisible = true;
+                CardFrontName.Text = "";
+                CardBackName.IsVisible = true;
+                CardBackName.Text = "";
             }
         }
 
 
         private async void CardSave_Clicked(object sender, EventArgs e)
         {
-
             var card = (Card)BindingContext;
 
-            // Create new Card
-
-            if (string.IsNullOrEmpty(card.FileName) && !string.IsNullOrEmpty(CardName.Text))
+            // Create new Card if filename front is empty and CardFrontName editor is not empty
+            if (string.IsNullOrEmpty(card.FileNameFront) && !string.IsNullOrEmpty(CardFrontName.Text))
             {
-                card.FileName = Path.Combine(Environment.GetFolderPath(
+                card.FileNameFront = Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.LocalApplicationData),
                 $"{Path.GetRandomFileName()}.{DeckName}.cards.txt");
-                File.WriteAllText(card.FileName, CardName.Text);
+                File.WriteAllText(card.FileNameFront, CardFrontName.Text);
+
+                card.FileNameBack = Path.Combine(Environment.GetFolderPath(
+                Environment.SpecialFolder.LocalApplicationData),
+                $"{Path.GetRandomFileName()}.{DeckName}.cards.txt");
+                File.WriteAllText(card.FileNameBack, CardBackName.Text);
             }
 
-            // Navigate back to Deck Page
+            // Navigate back to ManageDeck Page
             await Navigation.PopModalAsync();
         }
 
@@ -65,13 +72,14 @@ namespace FlashcardApp
             var card = (Card)BindingContext;
 
             // If there is a note
-            if (File.Exists(card.FileName))
+            if (File.Exists(card.FileNameFront))
             {
-                File.Delete(card.FileName);
+                File.Delete(card.FileNameFront);
+                File.Delete(card.FileNameBack);
             }
 
 
-            // Navigation back to Deck Page
+            // Navigation back to ManageDeck Page
             await Navigation.PopModalAsync();
         }
     }

@@ -37,11 +37,11 @@ namespace FlashcardApp
                 var card = new Card
                 {
                     FrontText = File.ReadAllText(filename),
-                    FileName = filename
+                    FileNameFront = filename
                 };
                 cards.Add(card);
             }
-
+           
             CardsListView.ItemsSource = cards.OrderBy(n => n.FrontText); 
         }
 
@@ -69,6 +69,7 @@ namespace FlashcardApp
         private async void GoBackToDeck_Clicked(object sender, EventArgs e)
         {
             
+
             await Navigation.PopModalAsync();
         }
     }

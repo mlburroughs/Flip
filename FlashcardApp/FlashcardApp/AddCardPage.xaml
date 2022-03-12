@@ -19,6 +19,7 @@
                         HeightRequest="100"
                         BackgroundColor="DarkSlateGray"
                         Clicked="CardSave_Clicked"/>
+                
                 <Button x:Name="CardDelete"
                         Text="Delete"
                         TextColor="LightSalmon"
@@ -35,6 +36,7 @@
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
+                
                 <Label x:Name="CardFrontTitle"
                        Text="{Binding}"
                        TextColor="DarkSlateGray"
@@ -44,12 +46,14 @@
                        FontAttributes="Bold"
                        HeightRequest="200" 
                        IsVisible="True"/>
+                
             </Frame>
 
             <Frame x:Name="CardBackTitleFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
+                
                 <Label x:Name="CardBackTitle"
                        Text="{Binding}"
                        TextColor="DarkSlateGray"
@@ -59,12 +63,14 @@
                        FontAttributes="Bold"
                        HeightRequest="200" 
                        IsVisible="True"/>
+                
             </Frame>
 
             <Frame x:Name="CardFrontNameFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
+                
                 <Editor x:Name="CardFrontName"
                         TextColor="DarkSlateGray"
                         Text="{Binding}"
@@ -72,12 +78,14 @@
                         PlaceholderColor="SlateGray"
                         FontSize="40"
                         HeightRequest="200"/>
+                
             </Frame>
 
             <Frame x:Name="CardBackNameFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
+                
                 <Editor x:Name="CardBackName"
                         TextColor="DarkSlateGray"
                         Text="{Binding}"
@@ -85,6 +93,7 @@
                         PlaceholderColor="SlateGray"
                         FontSize="40"
                         HeightRequest="200"/>
+                
             </Frame>
 
         </StackLayout>

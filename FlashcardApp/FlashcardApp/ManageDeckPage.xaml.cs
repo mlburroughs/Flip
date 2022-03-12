@@ -29,6 +29,7 @@ namespace FlashcardApp
 
             var deckList = deck.CardsInDeck;
 
+            // Create List of cards
             var cards = new List<Card>();
             var files = Directory.EnumerateFiles(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData), $"*.{deckName}.front.cards.txt");
@@ -46,7 +47,7 @@ namespace FlashcardApp
         }
 
 
-
+        // Add new card for deck
         private async void NewCardForDeck_Clicked(object sender, EventArgs e)
         {
             var deck = (Deck)BindingContext;
@@ -56,6 +57,7 @@ namespace FlashcardApp
             });
         }
 
+        // Click on existing card in deck
         private async void CardsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var deck = (Deck)BindingContext;
@@ -66,10 +68,9 @@ namespace FlashcardApp
 
         }
 
+        // Go Back to AddDeckPage
         private async void GoBackToDeck_Clicked(object sender, EventArgs e)
         {
-            
-
             await Navigation.PopModalAsync();
         }
     }

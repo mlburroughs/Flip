@@ -26,6 +26,7 @@ namespace FlashcardApp
             var card = (Card)BindingContext;
             var cardFrontFilename = card.FileNameFront;
             
+            // Sets up visibility
             if (!string.IsNullOrEmpty(card.FileNameFront))
             {
                 var cardBackFilename = cardFrontFilename.Replace("front", "back");
@@ -58,7 +59,7 @@ namespace FlashcardApp
             }
         }
 
-
+        // Saves card and returns to ManageDeckPage
         private async void CardSave_Clicked(object sender, EventArgs e)
         {
             var card = (Card)BindingContext;
@@ -79,10 +80,11 @@ namespace FlashcardApp
                 File.WriteAllText(card.FileNameBack, CardBackName.Text);
             }
 
-            // Navigate back to ManageDeck Page
+            // Navigates back to ManageDeckPage
             await Navigation.PopModalAsync();
         }
 
+        // Deletes card and returns to ManageDeckPage
         private async void CardDelete_Clicked(object sender, EventArgs e)
         {
             var card = (Card)BindingContext;

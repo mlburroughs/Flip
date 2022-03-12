@@ -17,7 +17,6 @@ namespace FlashcardApp
     public partial class AddDeckPage : ContentPage
     {
 
-
         public object myDeck { get; internal set; }
 
         public AddDeckPage()
@@ -84,7 +83,6 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
-
             // If filename is empty, get new files name
             if (string.IsNullOrEmpty(deck.FileName))
             {
@@ -95,7 +93,6 @@ namespace FlashcardApp
                 File.WriteAllText(deck.FileName, deck.DeckName);
             }
             
-            
             await Navigation.PopModalAsync();// Navigates back to Deck Page
         }
 
@@ -104,7 +101,6 @@ namespace FlashcardApp
         private async void DeckDelete_Clicked(object sender, EventArgs e)
         {
             var deck = (Deck)BindingContext;
-
 
             // If there is a deck
             if (File.Exists(deck.FileName))
@@ -127,13 +123,11 @@ namespace FlashcardApp
                     File.Delete(filename);
                 }
 
-                
                 File.Delete(deck.FileName);// Deletes deck name filename
             }
 
             
             DeckName.Text = string.Empty;// Text box clears
-            
             await Navigation.PopModalAsync();// Navigates back to Deck Page
         }
 
@@ -143,7 +137,7 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
-            // If filename is empty, get new files name
+            // If filename is empty, get new filename
             if (string.IsNullOrEmpty(deck.FileName))
                 {
                 DeckName.Text = deck.DeckName;
@@ -168,10 +162,8 @@ namespace FlashcardApp
             var deck = (Deck)BindingContext;
             var card = deck.CardsInDeck;
 
-
             await Navigation.PushModalAsync(new PracticeDeckPage(deck.DeckName, deck.CardsInDeck)
             {
-                
             }) ;
         }
     }

@@ -17,28 +17,24 @@ namespace FlashcardApp
         public string DeckName { get; set; }
         public List<Card> Cards { get; set; }
         public int Count { get; set; }
+
         public PracticeDeckPage(string deckName, List<Card> cards)
         {
             InitializeComponent();
             DeckName = deckName;
             Cards = cards;
             Count = 0;
-            
         }
 
         protected override void OnAppearing()
         {
-            
-
             DeckTitle.Text = DeckName;
             var firstcard = Cards[0];
             CardFrontName.Text = firstcard.FrontText;
             CardBackName.Text = "blank";
-
-
         }
 
-
+        // Navigates back to deck
         private async void GoBackToDeck_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();

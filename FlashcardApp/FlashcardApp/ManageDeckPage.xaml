@@ -4,24 +4,26 @@
              x:Class="FlashcardApp.ManageDeckPage"
              xmlns:model="clr-namespace:FlashcardApp.Models">
     <ContentPage.Content>
+        
         <StackLayout>
             
             <Button x:Name="NewCardForDeck"
-                Text="Add Card"
-                TextColor="LightSalmon"
-                FontAttributes="Bold"
-                HeightRequest="100"
-                FontSize="20"
-                BackgroundColor="DarkSlateGray"
-                Clicked="NewCardForDeck_Clicked"/>
+                    Text="Add Card"
+                    TextColor="LightSalmon"
+                    FontAttributes="Bold"
+                    HeightRequest="100"
+                    FontSize="20"
+                    BackgroundColor="DarkSlateGray"
+                    Clicked="NewCardForDeck_Clicked"/>
+            
             <Button x:Name="GoBackToDeck"
-                Text="Back To Deck"
-                TextColor="LightSalmon"
-                FontAttributes="Bold"
-                HeightRequest="100"
-                FontSize="20"
-                BackgroundColor="DarkSlateGray"
-                Clicked="GoBackToDeck_Clicked"/>
+                    Text="Back To Deck"
+                    TextColor="LightSalmon"
+                    FontAttributes="Bold"
+                    HeightRequest="100"
+                    FontSize="20"
+                    BackgroundColor="DarkSlateGray"
+                    Clicked="GoBackToDeck_Clicked"/>
 
             <Label x:Name="DeckTitle"
                    Text="{Binding}"
@@ -31,6 +33,7 @@
                    FontSize="30"
                    FontAttributes="Bold"
                    HeightRequest="50" />
+            
             <Label x:Name="CardsTitle"
                    Text="Cards in Deck"
                    TextColor="DarkSlateGray"
@@ -44,15 +47,22 @@
             <ListView x:Name="CardsListView"
                       Margin="20"
                       ItemSelected="CardsListView_ItemSelected">
+                
                 <ListView.ItemTemplate>
+                    
                     <DataTemplate x:DataType="model:Card">
+                        
                         <TextCell Text="{Binding FrontText}"
                                   TextColor="DarkSlateGray"
                                   Detail="{Binding Date}"
                                   DetailColor="SlateGray"/>
+                        
                     </DataTemplate>
+                    
                 </ListView.ItemTemplate>
+                
             </ListView>
+            
         </StackLayout>
         
     </ContentPage.Content>

@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashcardApp.PracticeDeckPage">
     <ContentPage.Content>
+        
         <StackLayout>
+            
             <Button x:Name="GoBackToDeck"
-                Text="Back To Deck"
-                TextColor="LightSalmon"
-                FontAttributes="Bold"
-                HeightRequest="100"
-                FontSize="20"
-                BackgroundColor="DarkSlateGray"
-                Clicked="GoBackToDeck_Clicked"/>
+                    Text="Back To Deck"
+                    TextColor="LightSalmon"
+                    FontAttributes="Bold"
+                    HeightRequest="100"
+                    FontSize="20"
+                    BackgroundColor="DarkSlateGray"
+                    Clicked="GoBackToDeck_Clicked"/>
 
             <Label x:Name="DeckTitle"
                    Text="{Binding}"
@@ -22,35 +24,39 @@
                    FontAttributes="Bold"
                    HeightRequest="50" />
 
-            
-
             <Frame x:Name="CardFrontNameFrame"
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
+                
                 <Label x:Name="CardFrontName"
-                   Text="{Binding}"
-                   TextColor="DarkSlateGray"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="40"
-                   FontAttributes="Bold"
-                   HeightRequest="200" />
+                       Text="{Binding}"
+                       TextColor="DarkSlateGray"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       HeightRequest="200" />
+                
             </Frame>
 
             <Frame x:Name="CardBackNameFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
-            <Label x:Name="CardBackName"
-                   Text="{Binding}"
-                   TextColor="DarkSlateGray"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="40"
-                   FontAttributes="Bold"
-                   HeightRequest="200" />
+                
+                <Label x:Name="CardBackName"
+                       Text="{Binding}"
+                       TextColor="DarkSlateGray"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       HeightRequest="200" />
+                
             </Frame>
+            
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

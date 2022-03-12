@@ -4,20 +4,21 @@
              x:Class="FlashcardApp.AddDeckPage"
              xmlns:model="clr-namespace:FlashcardApp.Models">
     <ContentPage.Content>
+        
         <StackLayout>
+
             <Label x:Name="TitleText"
-                       Grid.Row="0"
-                       Grid.Column="0"
-                       Text="{Binding}"
-                       TextColor="DarkSlateGray"
-                       FontSize="40"
-                       FontAttributes="Bold"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"
-                       HeightRequest="130" 
-                       IsVisible="True"/>
-            
-                         
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   FontSize="40"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   HeightRequest="130" 
+                   IsVisible="True"/>
+
             <Editor x:Name="DeckName"
                     Placeholder="{Binding}"
                     PlaceholderColor="DarkSlateGray"
@@ -42,6 +43,7 @@
                         HeightRequest="100"
                         FontSize="20"
                         Clicked="DeckSave_Clicked"/>
+                
                 <Button x:Name="DeckDelete"
                         Text="Delete"
                         TextColor="LightSalmon"
@@ -51,6 +53,7 @@
                         FontSize="20"
                         Clicked="DeckDelete_Clicked"
                         Grid.Column="1"/>
+                
             </Grid>
 
             <Button x:Name="ManageDeck"
@@ -61,6 +64,7 @@
                     FontSize="20"
                     BackgroundColor="DarkSlateGray"
                     Clicked="ManageDeck_Clicked"/>
+            
             <Button x:Name="PracticeDeck"
                     Text="Practice Deck"
                     TextColor="LightSalmon"
@@ -70,35 +74,37 @@
                     BackgroundColor="DarkSlateGray"
                     Clicked="PracticeDeck_Clicked"/>
 
-            
-       
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            
             <Grid.RowDefinitions>
-                    <RowDefinition Height="20"/>
-                </Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
 
             <Label x:Name="CreatedOnText"
-                       Grid.Row="0"
-                       Grid.Column="0"
-                       Text="Created: "
-                       TextColor="DarkSlateGray"
-                       FontAttributes="Bold"
-                       HeightRequest="16" 
-                       IsVisible="True"/>
-                <Label x:Name="CreatedOn"
-                       Grid.Row="0"
-                       Grid.Column="1"
-                       Text="{Binding}"
-                       TextColor="DarkSlateGray"
-                       HeightRequest="16"
-                       HorizontalTextAlignment="End"
-                       IsVisible="True"/>
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Text="Created: "
+                   TextColor="DarkSlateGray"
+                   FontAttributes="Bold"
+                   HeightRequest="16" 
+                   IsVisible="True"/>
+            
+             <Label x:Name="CreatedOn"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="{Binding}"
+                    TextColor="DarkSlateGray"
+                    HeightRequest="16"
+                    HorizontalTextAlignment="End"
+                    IsVisible="True"/>
+            
             </Grid>
+            
         </StackLayout>
+        
     </ContentPage.Content>
 </ContentPage>

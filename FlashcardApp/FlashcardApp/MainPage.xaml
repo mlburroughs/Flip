@@ -5,6 +5,7 @@
              xmlns:model="clr-namespace:FlashcardApp.Models">
 
     <StackLayout>
+        
         <Button x:Name="NewDeck"
                 Text="Add Deck"
                 Clicked="NewDeck_Clicked"
@@ -13,19 +14,27 @@
                 FontSize="20"
                 HeightRequest="100"
                 BackgroundColor="DarkSlateGray"/>
+        
         <ListView x:Name="DecksListView"
                   Margin="20"
                   ItemSelected="DecksListView_ItemSelected">
+            
             <ListView.ItemTemplate>
+                
                 <DataTemplate x:DataType="model:Deck">
+                    
                     <TextCell Text="{Binding DeckName}"
                               TextColor="DarkSlateGray"
                               Detail="{Binding Date}"
                               DetailColor="SlateGray"
                               Height="60"/>
+                    
                 </DataTemplate>
+                
             </ListView.ItemTemplate>
+            
         </ListView>
+        
     </StackLayout>
 
 </ContentPage>

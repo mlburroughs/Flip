@@ -30,43 +30,62 @@
                         Grid.Column="1"/>
 
             </Grid>
-            
-            <Label x:Name="CardFrontTitle"
-                   Text="{Binding}"
-                   TextColor="DarkSlateGray"
-                   FontSize="40"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   HeightRequest="70" 
-                   IsVisible="True"/>
 
-            <Label x:Name="CardBackTitle"
-                   Text="{Binding}"
-                   TextColor="DarkSlateGray"
-                   FontSize="40"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   HeightRequest="70" 
-                   IsVisible="True"/>
+            <Frame x:Name="CardFrontTitleFrame" 
+                   BorderColor="DarkSlateGray"
+                   Margin="10"
+                   WidthRequest="2">
+                <Label x:Name="CardFrontTitle"
+                       Text="{Binding}"
+                       TextColor="DarkSlateGray"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       HeightRequest="200" 
+                       IsVisible="True"/>
+            </Frame>
 
-            <Editor x:Name="CardFrontName"
-                    TextColor="DarkSlateGray"
-                    Text="{Binding}"
-                    Placeholder="Card Front"
-                    PlaceholderColor="SlateGray"
-                    FontSize="40"
-                    HeightRequest="70"/>
+            <Frame x:Name="CardBackTitleFrame" 
+                   BorderColor="DarkSlateGray"
+                   Margin="10"
+                   WidthRequest="2">
+                <Label x:Name="CardBackTitle"
+                       Text="{Binding}"
+                       TextColor="DarkSlateGray"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="40"
+                       FontAttributes="Bold"
+                       HeightRequest="200" 
+                       IsVisible="True"/>
+            </Frame>
 
-            <Editor x:Name="CardBackName"
-                    TextColor="DarkSlateGray"
-                    Text="{Binding}"
-                    Placeholder="Card Back"
-                    PlaceholderColor="SlateGray"
-                    FontSize="40"
-                    HeightRequest="70"/>
+            <Frame x:Name="CardFrontNameFrame" 
+                   BorderColor="DarkSlateGray"
+                   Margin="10"
+                   WidthRequest="2">
+                <Editor x:Name="CardFrontName"
+                        TextColor="DarkSlateGray"
+                        Text="{Binding}"
+                        Placeholder="Card Front"
+                        PlaceholderColor="SlateGray"
+                        FontSize="40"
+                        HeightRequest="200"/>
+            </Frame>
 
+            <Frame x:Name="CardBackNameFrame" 
+                   BorderColor="DarkSlateGray"
+                   Margin="10"
+                   WidthRequest="2">
+                <Editor x:Name="CardBackName"
+                        TextColor="DarkSlateGray"
+                        Text="{Binding}"
+                        Placeholder="Card Back"
+                        PlaceholderColor="SlateGray"
+                        FontSize="40"
+                        HeightRequest="200"/>
+            </Frame>
 
         </StackLayout>
     </ContentPage.Content>

@@ -24,7 +24,8 @@
 
             
 
-            <Frame BorderColor="DarkSlateGray"
+            <Frame x:Name="CardFrontNameFrame"
+                   BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
                 <Label x:Name="CardFrontName"
@@ -32,12 +33,13 @@
                    TextColor="DarkSlateGray"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
-                   FontSize="30"
+                   FontSize="40"
                    FontAttributes="Bold"
                    HeightRequest="200" />
             </Frame>
 
-            <Frame BorderColor="DarkSlateGray"
+            <Frame x:Name="CardBackNameFrame" 
+                   BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
             <Label x:Name="CardBackName"
@@ -45,7 +47,7 @@
                    TextColor="DarkSlateGray"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
-                   FontSize="30"
+                   FontSize="40"
                    FontAttributes="Bold"
                    HeightRequest="200" />
             </Frame>

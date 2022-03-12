@@ -31,9 +31,12 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
+
+            // Gets cards and places them in deck.CardsInList
             var cards = new List<Card>();
             var files = Directory.EnumerateFiles(Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.cards.txt");
+                    Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.front.cards.txt");
+
             foreach (var filename in files)
             {
                 var card = new Card
@@ -46,10 +49,11 @@ namespace FlashcardApp
 
             deck.CardsInDeck = cards;
 
+
+            // Sets up visibility based on deck attributes
             if (!string.IsNullOrEmpty(deck.FileName))
             {
-                CreatedOn.Text = File.GetLastAccessTime(deck.FileName).ToString();
-                AccessedOn.Text = File.GetCreationTime(deck.FileName).ToString(); ;
+                CreatedOn.Text = File.GetCreationTime(deck.FileName).ToString();
                 DeckName.Placeholder = deck.DeckName;
                 DeckName.IsVisible = false;
                 TitleText.Text = deck.DeckName;
@@ -68,8 +72,6 @@ namespace FlashcardApp
             {
                 CreatedOn.IsVisible = false;
                 CreatedOnText.IsVisible = false;
-                AccessedOn.IsVisible = false;
-                AccessedOnText.IsVisible = false;
                 TitleText.IsVisible = false;
                 DeckName.Placeholder = "Enter Title";
                 PracticeDeck.IsVisible = false;
@@ -82,7 +84,9 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
-            if (string.IsNullOrEmpty(deck.FileName))// If filename is empty, get new files name
+
+            // If filename is empty, get new files name
+            if (string.IsNullOrEmpty(deck.FileName))
             {
                 deck.FileName = Path.Combine(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData),
@@ -91,8 +95,8 @@ namespace FlashcardApp
                 File.WriteAllText(deck.FileName, deck.DeckName);
             }
             
-            // Navigate back to Deck Page
-            await Navigation.PopModalAsync();
+            
+            await Navigation.PopModalAsync();// Navigates back to Deck Page
         }
 
 
@@ -101,25 +105,36 @@ namespace FlashcardApp
         {
             var deck = (Deck)BindingContext;
 
+
             // If there is a deck
             if (File.Exists(deck.FileName))
             {
-                var files = Directory.EnumerateFiles(Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.cards.txt");
+                // Deletes front card filenames
+                var frontCardFiles = Directory.EnumerateFiles(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.front.cards.txt");
 
-                foreach (var filename in files)
+                foreach (var filename in frontCardFiles)
                 {
                     File.Delete(filename);
                 }
-                File.Delete(deck.FileName);
+
+                // Deletes back card filenames
+                var backCardFiles = Directory.EnumerateFiles(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.back.cards.txt");
+
+                foreach (var filename in backCardFiles)
+                {
+                    File.Delete(filename);
+                }
+
+                
+                File.Delete(deck.FileName);// Deletes deck name filename
             }
 
-
-            // Text box clears
-            DeckName.Text = string.Empty;
-
-            // Navigation back to Deck Page
-            await Navigation.PopModalAsync();
+            
+            DeckName.Text = string.Empty;// Text box clears
+            
+            await Navigation.PopModalAsync();// Navigates back to Deck Page
         }
 
 
@@ -139,7 +154,6 @@ namespace FlashcardApp
             }
                 
             
-
             await Navigation.PushModalAsync(new ManageDeckPage
                 {
                     BindingContext = deck

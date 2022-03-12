@@ -31,7 +31,7 @@ namespace FlashcardApp
 
             var cards = new List<Card>();
             var files = Directory.EnumerateFiles(Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData), $"*.{deckName}.cards.txt");
+                    Environment.SpecialFolder.LocalApplicationData), $"*.{deckName}.front.cards.txt");
             foreach (var filename in files)
             {
                 var card = new Card

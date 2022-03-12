@@ -79,9 +79,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
 
             <Label x:Name="CreatedOnText"
                        Grid.Row="0"
@@ -91,7 +90,7 @@
                        FontAttributes="Bold"
                        HeightRequest="16" 
                        IsVisible="True"/>
-            <Label x:Name="CreatedOn"
+                <Label x:Name="CreatedOn"
                        Grid.Row="0"
                        Grid.Column="1"
                        Text="{Binding}"
@@ -99,23 +98,7 @@
                        HeightRequest="16"
                        HorizontalTextAlignment="End"
                        IsVisible="True"/>
-            <Label x:Name="AccessedOnText"
-                       Grid.Row="1"
-                       Grid.Column="0"
-                       Text="Last Accessed: "
-                       TextColor="DarkSlateGray"
-                       FontAttributes="Bold"
-                       HeightRequest="16" 
-                       IsVisible="True"/>
-            <Label x:Name="AccessedOn"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Text="{Binding}"
-                       TextColor="DarkSlateGray"
-                       HeightRequest="16" 
-                       HorizontalTextAlignment="End"
-                       IsVisible="True"/>
-        </Grid>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

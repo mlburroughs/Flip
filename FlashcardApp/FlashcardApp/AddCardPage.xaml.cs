@@ -24,23 +24,37 @@ namespace FlashcardApp
         protected override void OnAppearing()
         {
             var card = (Card)BindingContext;
+            var cardFrontFilename = card.FileNameFront;
+            
             if (!string.IsNullOrEmpty(card.FileNameFront))
             {
+                var cardBackFilename = cardFrontFilename.Replace("front", "back");
+                var cardBackText = File.ReadAllText(cardBackFilename);
+
                 CardFrontTitle.Text = card.FrontText;
-                CardBackTitle.Text = card.BackText;
+                CardBackTitle.Text = cardBackText;
+                CardFrontName.Text = card.FrontText;
+                CardBackName.Text = cardBackText;
+
                 CardFrontName.IsVisible = false;
                 CardBackName.IsVisible = false;
-                CardFrontName.Text = card.FrontText;
-                CardBackName.Text = card.BackText;
+                CardFrontNameFrame.IsVisible = false;
+                CardBackNameFrame.IsVisible = false;
             }
             else
             {
+                CardFrontName.Text = "";
+                CardBackName.Text = "";
+
                 CardFrontTitle.IsVisible = false;
                 CardBackTitle.IsVisible = false;
+                CardFrontTitleFrame.IsVisible = false;
+                CardBackTitleFrame.IsVisible = false;
                 CardFrontName.IsVisible = true;
-                CardFrontName.Text = "";
                 CardBackName.IsVisible = true;
-                CardBackName.Text = "";
+                CardFrontNameFrame.IsVisible = true;
+                CardBackNameFrame.IsVisible = true;
+
             }
         }
 
@@ -52,14 +66,16 @@ namespace FlashcardApp
             // Create new Card if filename front is empty and CardFrontName editor is not empty
             if (string.IsNullOrEmpty(card.FileNameFront) && !string.IsNullOrEmpty(CardFrontName.Text))
             {
+                var rpath = Path.GetRandomFileName();
+
                 card.FileNameFront = Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.LocalApplicationData),
-                $"{Path.GetRandomFileName()}.{DeckName}.cards.txt");
+                $"{rpath}.{DeckName}.front.cards.txt");
                 File.WriteAllText(card.FileNameFront, CardFrontName.Text);
 
                 card.FileNameBack = Path.Combine(Environment.GetFolderPath(
                 Environment.SpecialFolder.LocalApplicationData),
-                $"{Path.GetRandomFileName()}.{DeckName}.cards.txt");
+                $"{rpath}.{DeckName}.back.cards.txt");
                 File.WriteAllText(card.FileNameBack, CardBackName.Text);
             }
 

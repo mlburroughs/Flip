@@ -19,6 +19,8 @@ namespace FlashcardApp
         public int Count { get; set; }
         public int ListLength { get; set; }
         public Card ShownCard { get; set; }
+        public int CardNumber { get; set; }
+        public string CardStatus { get; set; }
 
         public PracticeDeckPage(string deckName, List<Card> cards)
         {
@@ -29,6 +31,8 @@ namespace FlashcardApp
             ListLength = Cards.Count;
             ShownCard = Cards[Count];
             CardBackName.IsVisible = false;
+            CardNumber = Count + 1;
+            CardStatus = $"{CardNumber}/{ListLength}";
         }
 
         protected override void OnAppearing()
@@ -36,7 +40,8 @@ namespace FlashcardApp
             DeckTitle.Text = DeckName;
             CardFrontName.Text = ShownCard.FrontText;
             CardBackName.Text = "blank";
-            NextItem.Text = Count.ToString();
+            NextItem.Text = CardStatus;
+            
         }
 
         // Navigates back to deck
@@ -47,17 +52,42 @@ namespace FlashcardApp
 
         private void NextItem_Clicked(object sender, EventArgs e)
         {
-            if (CardBackName.IsVisible == false)
+            if (Count < ListLength-1) // alternate between revealing back and iterating through deck
+            {
+                if (CardBackName.IsVisible == false)
+                {
+                    CardBackName.IsVisible = true;
+                }
+                else
+                {
+                    Count++;
+                    ShownCard = Cards[Count];
+                    CardBackName.IsVisible = false;
+                    CardFrontName.Text = ShownCard.FrontText;
+
+                    CardNumber = Count + 1;
+                    CardStatus = $"{CardNumber}/{ListLength}";
+                    NextItem.Text = CardStatus;
+                }
+            }
+            else if (Count == ListLength-1) // Reveal back side of last card
             {
                 CardBackName.IsVisible = true;
-            }
-            else
-            {
                 Count++;
-                ShownCard = Cards[Count];
-
-                CardBackName.IsVisible = false;
             }
+            else // Reset deck to first card
+            {
+                Count = 0;
+                ShownCard = Cards[Count];
+                CardBackName.IsVisible = false;
+                CardFrontName.Text = ShownCard.FrontText;
+
+                CardNumber = Count + 1;
+                CardStatus = $"{CardNumber}/{ListLength}";
+                NextItem.Text = CardStatus;
+            }
+
+            
         }
     }
 }

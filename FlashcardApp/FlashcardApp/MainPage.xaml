@@ -11,7 +11,7 @@
                 Clicked="NewDeck_Clicked"
                 TextColor="LightSalmon"
                 FontAttributes="Bold"
-                FontSize="20"
+                FontSize="30"
                 HeightRequest="100"
                 BackgroundColor="DarkSlateGray"/>
         

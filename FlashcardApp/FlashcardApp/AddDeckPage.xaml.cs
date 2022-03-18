@@ -58,14 +58,7 @@ namespace FlashcardApp
                 TitleText.Text = deck.DeckName;
                 TitleText.IsVisible = true;
 
-                if(deck.CardsInDeck?.Count > 0)
-                {
-                    PracticeDeck.IsVisible = true;
-                }
-                else
-                {
-                    PracticeDeck.IsVisible = false;
-                }
+                PracticeDeck.IsVisible = deck.CardsInDeck?.Count > 0;
             }
             else
             {
@@ -139,12 +132,12 @@ namespace FlashcardApp
 
             // If filename is empty, get new filename
             if (string.IsNullOrEmpty(deck.FileName))
-                {
-                DeckName.Text = deck.DeckName;
+            {
                 deck.FileName = Path.Combine(Environment.GetFolderPath(
                         Environment.SpecialFolder.LocalApplicationData),
                         $"{Path.GetRandomFileName()}.decks.txt");
-                 File.WriteAllText(deck.FileName, DeckName.Text);
+                deck.DeckName = DeckName.Text;
+                File.WriteAllText(deck.FileName, DeckName.Text);
             }
                 
             

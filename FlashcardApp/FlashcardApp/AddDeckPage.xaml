@@ -21,8 +21,8 @@
 
             <Editor x:Name="DeckName"
                     Placeholder="{Binding}"
-                    PlaceholderColor="DarkSlateGray"
-                    TextColor="SlateGray"
+                    PlaceholderColor="SlateGray"
+                    TextColor="DarkSlateGray"
                     FontSize="40"
                     FontAttributes="Bold"
                     VerticalOptions="Center"
@@ -41,7 +41,7 @@
                         FontAttributes="Bold"
                         BackgroundColor="DarkSlateGray"
                         HeightRequest="100"
-                        FontSize="20"
+                        FontSize="30"
                         Clicked="DeckSave_Clicked"/>
                 
                 <Button x:Name="DeckDelete"
@@ -50,18 +50,19 @@
                         FontAttributes="Bold"
                         BackgroundColor="DarkSlateGray"
                         HeightRequest="100"
-                        FontSize="20"
+                        FontSize="30"
                         Clicked="DeckDelete_Clicked"
                         Grid.Column="1"/>
                 
             </Grid>
 
+            
             <Button x:Name="ManageDeck"
                     Text="Manage Deck"
                     TextColor="LightSalmon"
                     FontAttributes="Bold"
                     HeightRequest="200"
-                    FontSize="20"
+                    FontSize="30"
                     BackgroundColor="DarkSlateGray"
                     Clicked="ManageDeck_Clicked"/>
             
@@ -70,11 +71,14 @@
                     TextColor="LightSalmon"
                     FontAttributes="Bold"
                     HeightRequest="200"
-                    FontSize="20"
+                    FontSize="30"
                     BackgroundColor="DarkSlateGray"
                     Clicked="PracticeDeck_Clicked"/>
 
-        <Grid>
+
+            <Grid VerticalOptions="EndAndExpand"
+                  Margin="5">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

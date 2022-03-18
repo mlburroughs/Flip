@@ -14,7 +14,7 @@
                 <Button x:Name="CardSave"
                         Text="Save"
                         TextColor="LightSalmon"
-                        FontSize="20"
+                        FontSize="30"
                         FontAttributes="Bold"
                         HeightRequest="100"
                         BackgroundColor="DarkSlateGray"
@@ -23,7 +23,7 @@
                 <Button x:Name="CardDelete"
                         Text="Delete"
                         TextColor="LightSalmon"
-                        FontSize="20"
+                        FontSize="30"
                         FontAttributes="Bold"
                         HeightRequest="100"
                         BackgroundColor="DarkSlateGray"
@@ -32,10 +32,20 @@
 
             </Grid>
 
+            <Label x:Name="DeckTitle"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HeightRequest="50" />
+
             <Frame x:Name="CardFrontTitleFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
-                   WidthRequest="2">
+                   WidthRequest="2"
+                   HasShadow="False">
                 
                 <Label x:Name="CardFrontTitle"
                        Text="{Binding}"
@@ -52,7 +62,8 @@
             <Frame x:Name="CardBackTitleFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
-                   WidthRequest="2">
+                   WidthRequest="2"
+                   HasShadow="False">
                 
                 <Label x:Name="CardBackTitle"
                        Text="{Binding}"
@@ -69,7 +80,8 @@
             <Frame x:Name="CardFrontNameFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
-                   WidthRequest="2">
+                   WidthRequest="2"
+                   HasShadow="False">
                 
                 <Editor x:Name="CardFrontName"
                         TextColor="DarkSlateGray"
@@ -84,7 +96,8 @@
             <Frame x:Name="CardBackNameFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
-                   WidthRequest="2">
+                   WidthRequest="2"
+                   HasShadow="False">
                 
                 <Editor x:Name="CardBackName"
                         TextColor="DarkSlateGray"

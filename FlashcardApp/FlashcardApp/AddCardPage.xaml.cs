@@ -15,14 +15,18 @@ namespace FlashcardApp
     public partial class AddCardPage : ContentPage
     {
         public string DeckName { get; set; }
+
         public AddCardPage(string deckName)
         {
             InitializeComponent();
             DeckName = deckName;
         }
 
+
         protected override void OnAppearing()
         {
+            DeckTitle.Text = DeckName;
+            
             var card = (Card)BindingContext;
             var cardFrontFilename = card.FileNameFront;
             
@@ -59,6 +63,7 @@ namespace FlashcardApp
             }
         }
 
+
         // Saves card and returns to ManageDeckPage
         private async void CardSave_Clicked(object sender, EventArgs e)
         {
@@ -84,6 +89,7 @@ namespace FlashcardApp
             await Navigation.PopModalAsync();
         }
 
+
         // Deletes card and returns to ManageDeckPage
         private async void CardDelete_Clicked(object sender, EventArgs e)
         {
@@ -95,10 +101,8 @@ namespace FlashcardApp
                 File.Delete(card.FileNameFront);
                 File.Delete(card.FileNameBack);
             }
-
-
-            // Navigation back to ManageDeck Page
-            await Navigation.PopModalAsync();
+            
+            await Navigation.PopModalAsync();// Navigation back to ManageDeck Page
         }
     }
 }

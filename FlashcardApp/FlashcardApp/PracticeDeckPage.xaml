@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlashcardApp.PracticeDeckPage">
     <ContentPage.Content>
-        
+
         <StackLayout>
-            
+
             <Button x:Name="GoBackToDeck"
                     Text="Back To Deck"
                     TextColor="LightSalmon"
@@ -24,11 +24,23 @@
                    FontAttributes="Bold"
                    HeightRequest="50" />
 
+            <Button x:Name="NextItem"
+                    Text="{Binding}"
+                    TextColor="LightSalmon"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    WidthRequest="100"
+                    FontSize="10"
+                    BackgroundColor="DarkSlateGray"
+                    Clicked="NextItem_Clicked"/>
+
+
+
             <Frame x:Name="CardFrontNameFrame"
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
-                
+
                 <Label x:Name="CardFrontName"
                        Text="{Binding}"
                        TextColor="DarkSlateGray"
@@ -37,14 +49,14 @@
                        FontSize="40"
                        FontAttributes="Bold"
                        HeightRequest="200" />
-                
+
             </Frame>
 
             <Frame x:Name="CardBackNameFrame" 
                    BorderColor="DarkSlateGray"
                    Margin="10"
                    WidthRequest="2">
-                
+
                 <Label x:Name="CardBackName"
                        Text="{Binding}"
                        TextColor="DarkSlateGray"
@@ -53,10 +65,10 @@
                        FontSize="40"
                        FontAttributes="Bold"
                        HeightRequest="200" />
-                
+
             </Frame>
-            
+
         </StackLayout>
-        
+
     </ContentPage.Content>
 </ContentPage>

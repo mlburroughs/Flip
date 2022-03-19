@@ -14,7 +14,8 @@ Main Page with link to either create new deck or navigate an existing:
 
 Manage cards within deck:
 
-<img width="280" alt="Github" src="https://user-images.githubusercontent.com/13874659/159103767-cb700d42-f89c-470a-a783-85e77ff73d29.png">
+<img width="280" alt="Github" src="https://user-images.githubusercontent.com/13874659/159135650-4d6aa0f2-92ef-4065-9def-00626dcb2329.png">
+
 
 Practice deck to traverse all cards:
 

@@ -38,7 +38,8 @@ namespace FlashcardApp
                 var card = new Card
                 {
                     FrontText = File.ReadAllText(filename),
-                    FileNameFront = filename
+                    FileNameFront = filename,
+                    Date = File.GetCreationTime(filename)
                 };
                 cards.Add(card);
             }

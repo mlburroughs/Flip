@@ -40,7 +40,7 @@
                         TextColor="LightSalmon"
                         FontAttributes="Bold"
                         BackgroundColor="DarkSlateGray"
-                        HeightRequest="100"
+                        HeightRequest="150"
                         FontSize="30"
                         Clicked="DeckSave_Clicked"/>
                 
@@ -49,7 +49,7 @@
                         TextColor="LightSalmon"
                         FontAttributes="Bold"
                         BackgroundColor="DarkSlateGray"
-                        HeightRequest="100"
+                        HeightRequest="150"
                         FontSize="30"
                         Clicked="DeckDelete_Clicked"
                         Grid.Column="1"/>
@@ -61,7 +61,7 @@
                     Text="Manage Deck"
                     TextColor="LightSalmon"
                     FontAttributes="Bold"
-                    HeightRequest="200"
+                    HeightRequest="180"
                     FontSize="30"
                     BackgroundColor="DarkSlateGray"
                     Clicked="ManageDeck_Clicked"/>
@@ -70,7 +70,7 @@
                     Text="Practice Deck"
                     TextColor="LightSalmon"
                     FontAttributes="Bold"
-                    HeightRequest="200"
+                    HeightRequest="180"
                     FontSize="30"
                     BackgroundColor="DarkSlateGray"
                     Clicked="PracticeDeck_Clicked"/>

@@ -12,7 +12,7 @@
                 TextColor="LightSalmon"
                 FontAttributes="Bold"
                 FontSize="30"
-                HeightRequest="100"
+                HeightRequest="150"
                 BackgroundColor="DarkSlateGray"/>
         
         <ListView x:Name="DecksListView"

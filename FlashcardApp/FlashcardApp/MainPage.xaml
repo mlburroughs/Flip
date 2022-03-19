@@ -14,27 +14,27 @@
                 FontSize="30"
                 HeightRequest="150"
                 BackgroundColor="DarkSlateGray"/>
-        
+
         <ListView x:Name="DecksListView"
                   Margin="20"
                   ItemSelected="DecksListView_ItemSelected">
-            
+
             <ListView.ItemTemplate>
-                
+
                 <DataTemplate x:DataType="model:Deck">
-                    
+
                     <TextCell Text="{Binding DeckName}"
                               TextColor="DarkSlateGray"
                               Detail="{Binding Date}"
                               DetailColor="SlateGray"
                               Height="60"/>
-                    
+
                 </DataTemplate>
-                
+
             </ListView.ItemTemplate>
-            
+
         </ListView>
-        
+
     </StackLayout>
 
 </ContentPage>

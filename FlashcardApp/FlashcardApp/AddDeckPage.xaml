@@ -94,7 +94,7 @@
                    Text="Created: "
                    TextColor="DarkSlateGray"
                    FontAttributes="Bold"
-                   HeightRequest="16" 
+                   HeightRequest="20" 
                    IsVisible="True"/>
             
              <Label x:Name="CreatedOn"
@@ -102,7 +102,7 @@
                     Grid.Column="1"
                     Text="{Binding}"
                     TextColor="DarkSlateGray"
-                    HeightRequest="16"
+                    HeightRequest="20"
                     HorizontalTextAlignment="End"
                     IsVisible="True"/>
             

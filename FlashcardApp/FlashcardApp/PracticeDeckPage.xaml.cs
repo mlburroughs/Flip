@@ -32,15 +32,16 @@ namespace FlashcardApp
             ShownCard = Cards[Count];
             CardBackName.IsVisible = false;
             CardNumber = Count + 1;
-            CardStatus = $"{CardNumber}/{ListLength}";
+            CardStatus = $"Card: {CardNumber}/{ListLength}";
         }
 
         protected override void OnAppearing()
         {
             DeckTitle.Text = DeckName;
             CardFrontName.Text = ShownCard.FrontText;
-            CardBackName.Text = "blank";
-            NextItem.Text = CardStatus;
+            CardBackName.Text = ShownCard.BackText;
+            NextItem.Text = "Reveal";
+            CardInDeckStatus.Text = CardStatus;
             
         }
 
@@ -57,6 +58,7 @@ namespace FlashcardApp
                 if (CardBackName.IsVisible == false)
                 {
                     CardBackName.IsVisible = true;
+                    NextItem.Text = "Next Card";
                 }
                 else
                 {
@@ -64,15 +66,18 @@ namespace FlashcardApp
                     ShownCard = Cards[Count];
                     CardBackName.IsVisible = false;
                     CardFrontName.Text = ShownCard.FrontText;
+                    CardBackName.Text = ShownCard.BackText;
 
                     CardNumber = Count + 1;
-                    CardStatus = $"{CardNumber}/{ListLength}";
-                    NextItem.Text = CardStatus;
+                    CardStatus = $"Card: {CardNumber}/{ListLength}";
+                    NextItem.Text = "Reveal";
+                    CardInDeckStatus.Text = CardStatus;
                 }
             }
             else if (Count == ListLength-1) // Reveal back side of last card
             {
                 CardBackName.IsVisible = true;
+                NextItem.Text = "Next Card";
                 Count++;
             }
             else // Reset deck to first card
@@ -81,13 +86,13 @@ namespace FlashcardApp
                 ShownCard = Cards[Count];
                 CardBackName.IsVisible = false;
                 CardFrontName.Text = ShownCard.FrontText;
+                CardBackName.Text = ShownCard.BackText;
 
                 CardNumber = Count + 1;
-                CardStatus = $"{CardNumber}/{ListLength}";
-                NextItem.Text = CardStatus;
+                CardStatus = $"Card: {CardNumber}/{ListLength}";
+                NextItem.Text = "Reveal";
+                CardInDeckStatus.Text = CardStatus;
             }
-
-            
         }
     }
 }

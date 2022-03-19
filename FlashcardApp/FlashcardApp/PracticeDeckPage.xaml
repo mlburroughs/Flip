@@ -5,43 +5,41 @@
     <ContentPage.Content>
 
         <StackLayout>
-
+            
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
             <Button x:Name="GoBackToDeck"
+                    Grid.Column="0"
                     Text="Back To Deck"
                     TextColor="LightSalmon"
                     FontAttributes="Bold"
-                    HeightRequest="100"
-                    FontSize="20"
+                    HeightRequest="150"
+                    FontSize="30"
                     BackgroundColor="DarkSlateGray"
                     Clicked="GoBackToDeck_Clicked"/>
-            
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Label x:Name="DeckTitle"
-                   Text="{Binding}"
-                   TextColor="DarkSlateGray"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="30"
-                   FontAttributes="Bold"
-                   HeightRequest="50" />
 
+            
             <Button x:Name="NextItem"
+                    Grid.Column="1"
                     Text="{Binding}"
                     TextColor="LightSalmon"
                     FontAttributes="Bold"
-                    HeightRequest="50"
-                    WidthRequest="40"
-                    FontSize="10"
+                    HeightRequest="150"
+                    FontSize="30"
                     BackgroundColor="DarkSlateGray"
                     Clicked="NextItem_Clicked"/>
-            </StackLayout>
+            </Grid>
 
 
             <Frame x:Name="CardFrontNameFrame"
                    BorderColor="DarkSlateGray"
                    Margin="10"
-                   WidthRequest="2"
-                   HasShadow="False">
+                   WidthRequest="2">
 
                 <Label x:Name="CardFrontName"
                        Text="{Binding}"
@@ -69,6 +67,28 @@
                        HeightRequest="200" />
 
             </Frame>
+
+            <StackLayout Orientation="Horizontal" 
+                         HeightRequest="50" 
+                         VerticalOptions="EndAndExpand"
+                         Margin="5">
+                
+                <Label x:Name="DeckTitle"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalTextAlignment="End"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+
+                <Label x:Name="CardInDeckStatus"
+                   Text="{Binding}"
+                   TextColor="DarkSlateGray"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalTextAlignment="End"
+                   FontSize="20" />
+                
+            </StackLayout>
 
         </StackLayout>
 

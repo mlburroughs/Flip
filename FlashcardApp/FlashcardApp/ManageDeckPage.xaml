@@ -4,26 +4,35 @@
              x:Class="FlashcardApp.ManageDeckPage"
              xmlns:model="clr-namespace:FlashcardApp.Models">
     <ContentPage.Content>
-        
+
         <StackLayout>
-            
-            <Button x:Name="NewCardForDeck"
-                    Text="Add Card"
-                    TextColor="LightSalmon"
-                    FontAttributes="Bold"
-                    HeightRequest="100"
-                    FontSize="30"
-                    BackgroundColor="DarkSlateGray"
-                    Clicked="NewCardForDeck_Clicked"/>
-            
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
             <Button x:Name="GoBackToDeck"
+                    Grid.Column="0"
                     Text="Back To Deck"
                     TextColor="LightSalmon"
                     FontAttributes="Bold"
-                    HeightRequest="100"
+                    HeightRequest="200"
                     FontSize="30"
                     BackgroundColor="DarkSlateGray"
                     Clicked="GoBackToDeck_Clicked"/>
+
+            <Button x:Name="NewCardForDeck"
+                    Grid.Column="1"
+                    Text="Add Card"
+                    TextColor="LightSalmon"
+                    FontAttributes="Bold"
+                    HeightRequest="200"
+                    FontSize="30"
+                    BackgroundColor="DarkSlateGray"
+                    Clicked="NewCardForDeck_Clicked"/>
+            </Grid>
 
             <Label x:Name="DeckTitle"
                    Text="{Binding}"

@@ -33,15 +33,18 @@ namespace FlashcardApp
 
             // Gets cards and places them in deck.CardsInList
             var cards = new List<Card>();
-            var files = Directory.EnumerateFiles(Environment.GetFolderPath(
+            var frontfiles = Directory.EnumerateFiles(Environment.GetFolderPath(
                     Environment.SpecialFolder.LocalApplicationData), $"*.{deck.DeckName}.front.cards.txt");
 
-            foreach (var filename in files)
+            foreach (var filename in frontfiles)
             {
                 var card = new Card
                 {
                     FrontText = File.ReadAllText(filename),
-                    FileNameFront = filename
+                    FileNameFront = filename,
+
+                    FileNameBack = filename.Replace("front", "back"),
+                    BackText = File.ReadAllText(filename.Replace("front", "back"))
                 };
                 cards.Add(card);
             }
@@ -153,7 +156,6 @@ namespace FlashcardApp
         private async void PracticeDeck_Clicked(object sender, EventArgs e)
         {
             var deck = (Deck)BindingContext;
-            var card = deck.CardsInDeck;
 
             await Navigation.PushModalAsync(new PracticeDeckPage(deck.DeckName, deck.CardsInDeck)
             {

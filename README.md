@@ -4,6 +4,8 @@ Flip is a Xamarin mobile application that allows the user to build and cycle thr
 Upon opening the application, the user is presented with all decks currently stored as well as the option to add a new deck. Through an individual deck,
 a user can manage the deck by adding, editing, and deleting cards. The user can also traverse cards in the deck.
 
+Below are snapshots from a Pixel 3 Pie 9.0 Android emulator.
+
 
 
 Main Page with link to either create new deck or navigate an existing:
